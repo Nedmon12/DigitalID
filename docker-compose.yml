@@ -1,0 +1,14 @@
+version: ''
+services:
+  postgres:
+    image: postgres:11
+    restart: always
+    environment:
+      - POSTGRES_USER=digid
+      - POSTGRES_PASSWORD=nedgiri
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+volumes:
+  postgres:
