@@ -1,6 +1,6 @@
 import { Response } from 'express'
 import jwt from 'jsonwebtoken'
-
+import {AccessTokenPayload, RefreshTokenPayload} from '../shared'
 
 const isProduction = process.env.ENVIRONMENT == 'production'
 enum TokenExpiration{
