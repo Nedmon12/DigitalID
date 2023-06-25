@@ -5,7 +5,7 @@ import { PrismaClient } from '@prisma/client'
 
 
 const prisma = PrismaClient
-export function login (req: Request, res: Response) {
+export async function login (req: Request, res: Response) {
     const {username, password} = req.body
     //
     // const user = db.findOne({username: username}) //I know db is undefined right now haven't decided yet
@@ -18,6 +18,13 @@ export function login (req: Request, res: Response) {
         //logim
         const token = buildToken(user)
         //do I set token here?
+        //I think i have to
         return res.status(200).json({token})
     }
+}
+
+export async function register (req: Request , res:Response) {
+    const {} = req.body
+
+    //
 }

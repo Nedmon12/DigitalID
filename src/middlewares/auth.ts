@@ -1,7 +1,7 @@
 import { Response } from 'express'
 import jwt from 'jsonwebtoken'
 import {AccessTokenPayload, RefreshTokenPayload} from '../shared'
-
+import { Prisma } from '@prisma/client'
 const isProduction = process.env.ENVIRONMENT == 'production'
 enum TokenExpiration{
     Access = 5*60,
@@ -13,7 +13,7 @@ enum Cookies {
 }
 //TODO
 //define User schema
-export function buildToken(user: typeof User) {
+export function buildToken(user: any) { //make this typesafe please?? //why why
     const accessPayload : AccessTokenPayload = {userId: user.id}
     const refreshPayload : RefreshTokenPayload = {userId: user.id, version:user.tokenVersion}
 
