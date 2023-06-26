@@ -27,6 +27,8 @@ jobs:
           remote_host: ${{secrets.HOST}}
           remote_user: ${{secrets.USERNAME}}
           remote_key: ${{secrets.PRIVATE_KEY}}
+          path: ""
+          remote_path: "~/digid-backend"
       - name: 🚀 ssh cleanup
         uses: tarunjangra/ssh-remote-cmd@v1
         with:
