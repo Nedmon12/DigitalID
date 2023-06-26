@@ -1,0 +1,35 @@
+name : deploy digid backend
+on : 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+
+  build:
+    name: npmInstall
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 checkout code
+        uses: actions/checkout@v2
+      - name: use Node 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.1'
+      - name: npm install
+        run: |
+          npm install
+          npx tsc build
+      - name: 📂 send files over
+        uses: burnett01/rsync-deployment@5.2
+        with: 
+          switches: -avr --exclude=""
+          remote_host:${{secrets.HOST}}
+          remote_user:${{secrets.USERNAME}}
+          remote_key: ${{secrets.PRIVATE_KEY}}
+      - name: 🚀 ssh cleanup
+        uses: tarunjangra/ssh-remote-cmd@v1
+        with:
+          command: |
+            systemctl restart backendservice
+            systemctl restart nginx
