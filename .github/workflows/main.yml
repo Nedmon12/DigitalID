@@ -21,7 +21,7 @@ jobs:
           npm install
           npx tsc build
       - name: 📂 send files over
-        uses: burnett01/rsync-deployment@5.2
+        uses: burnett01/rsync-deployments@5.2
         with: 
           switches: -avr
           remote_host: ${{secrets.HOST}}
