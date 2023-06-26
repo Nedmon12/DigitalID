@@ -19,7 +19,6 @@ jobs:
       - name: npm install
         run: |
           npm install
-          npx tsc build
       - name: 📂 send files over
         uses: burnett01/rsync-deployments@5.2
         with: 
