@@ -33,6 +33,6 @@ jobs:
           command: |
             systemctl restart backendservice
             systemctl restart nginx
-        host: ${{secrets.HOST}}
-        user: ${{secrets.USERNAME}}
-        key: ${{secrets.PRIVATE_KEY}}
+          host: ${{secrets.HOST}}
+          user: ${{secrets.USERNAME}}
+          key: ${{secrets.PRIVATE_KEY}}
